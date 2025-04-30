@@ -1,0 +1,80 @@
+---
+import Container from '../common/Container.astro';
+import Card from '../common/Card.astro';
+---
+
+<section id="testimonials" class="py-16 md:py-24 bg-white">
+  <Container>
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Trusted by Businesses Everywhere</h2>
+      <p class="text-lg text-neutral-600 max-w-3xl mx-auto">Here's what our customers have to say about their experience with our POS system.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          quote: "Switching to POSPro was one of the best business decisions we've made. Our checkout process is faster, inventory management is effortless, and we've increased our sales by 30%.",
+          name: "Emily Johnson",
+          position: "Owner, The Cozy Cafe",
+          image: "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=128&h=128&dpr=1"
+        },
+        {
+          quote: "The inventory management system alone has saved us countless hours. We always know what's in stock and what needs to be ordered. The customer support is also phenomenal.",
+          name: "Michael Rodriguez",
+          position: "Manager, Urban Outfitters",
+          image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=128&h=128&dpr=1"
+        },
+        {
+          quote: "We've tried several POS systems, and POSPro is by far the most intuitive and reliable. The analytics have given us insights that helped us optimize our business operations.",
+          name: "Sarah Williams",
+          position: "Director, Bloom Boutique",
+          image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=128&h=128&dpr=1"
+        },
+      ].map((testimonial, index) => (
+        <Card class={`testimonial-card reveal-up`} data-delay={`${index * 100}`}>
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="text-primary-200" viewBox="0 0 16 16">
+                <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/>
+              </svg>
+            </div>
+            
+            <blockquote class="mb-6">
+              <p class="text-neutral-700 italic mb-4">{testimonial.quote}</p>
+            </blockquote>
+            
+            <div class="flex items-center">
+              <img src={testimonial.image} alt={testimonial.name} class="w-12 h-12 rounded-full mr-4" />
+              <div>
+                <h4 class="font-semibold">{testimonial.name}</h4>
+                <p class="text-sm text-neutral-500">{testimonial.position}</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Container>
+</section>
+
+<script>
+  // Animation for testimonial cards
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('active');
+          }, parseInt(entry.target.dataset.delay || '0'));
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+    });
+    
+    document.querySelectorAll('.testimonial-card').forEach(card => {
+      observer.observe(card);
+    });
+  });
+</script>

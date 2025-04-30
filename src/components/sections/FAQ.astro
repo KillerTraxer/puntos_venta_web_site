@@ -1,0 +1,123 @@
+---
+import Container from '../common/Container.astro';
+---
+
+<section id="faqs" class="py-16 md:py-24 bg-neutral-50">
+  <Container narrow={true}>
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+      <p class="text-lg text-neutral-600 max-w-3xl mx-auto">Find answers to common questions about our POS system.</p>
+    </div>
+    
+    <div class="space-y-6 max-w-3xl mx-auto">
+      {[
+        {
+          question: "What hardware do I need to use your POS system?",
+          answer: "Our POS system is flexible and can work on a variety of hardware setups. For basic needs, you can use a tablet or computer with internet access. For a complete setup, we recommend a touchscreen monitor, receipt printer, cash drawer, and barcode scanner. We can provide recommendations based on your specific business needs."
+        },
+        {
+          question: "Can I use my existing hardware with your POS system?",
+          answer: "In most cases, yes! Our system is compatible with a wide range of hardware. We support standard receipt printers, cash drawers, barcode scanners, and card readers. Contact our support team for a compatibility check of your specific hardware."
+        },
+        {
+          question: "Is the POS system cloud-based or locally installed?",
+          answer: "Our POS system is cloud-based, which means you can access your data from anywhere with an internet connection. This also ensures your data is backed up automatically and updates are deployed seamlessly without requiring manual installation."
+        },
+        {
+          question: "How secure is your payment processing?",
+          answer: "We take security very seriously. Our payment processing is PCI DSS compliant and uses end-to-end encryption for all transactions. We never store sensitive card information on your devices, and our system is regularly updated with the latest security measures."
+        },
+        {
+          question: "Can I track inventory across multiple locations?",
+          answer: "Yes, our Professional and Enterprise plans support multi-location inventory management. You can track stock levels across different stores, transfer inventory between locations, and generate reports for each location or view consolidated data."
+        },
+        {
+          question: "Do you offer training for new users?",
+          answer: "Absolutely! We provide comprehensive training resources including video tutorials, documentation, and webinars. Our Professional and Enterprise plans also include personalized onboarding sessions to help get your team up to speed quickly."
+        },
+        {
+          question: "Can I cancel my subscription at any time?",
+          answer: "Yes, there are no long-term contracts required. You can cancel your subscription at any time, and we'll prorate any unused portion of your billing period for a refund."
+        }
+      ].map((faq, index) => (
+        <div class={`faq-item bg-white rounded-xl p-6 shadow-sm reveal-up`} data-delay={`${index * 100}`}>
+          <button class="faq-question w-full flex justify-between items-center text-left" aria-expanded="false">
+            <h3 class="text-lg font-medium pr-8">{faq.question}</h3>
+            <svg class="faq-icon w-5 h-5 text-primary-500 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 hidden">
+            <p class="text-neutral-600">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <p class="text-neutral-600 mb-6">Still have questions? We're here to help.</p>
+      <a href="#contact" class="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium">
+        Contact our support team
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-1">
+          <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </Container>
+</section>
+
+<script>
+  // FAQ accordion functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('active');
+          }, parseInt(entry.target.dataset.delay || '0'));
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+    });
+    
+    document.querySelectorAll('.faq-item').forEach(item => {
+      observer.observe(item);
+      
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('.faq-icon');
+      
+      if (question && answer && icon) {
+        question.addEventListener('click', () => {
+          // Check if this FAQ is already open
+          const isOpen = answer.classList.contains('block');
+          
+          // Close all FAQs
+          document.querySelectorAll('.faq-answer').forEach(a => {
+            a.classList.remove('block');
+            a.classList.add('hidden');
+          });
+          
+          document.querySelectorAll('.faq-icon').forEach(i => {
+            i.style.transform = 'rotate(0deg)';
+          });
+          
+          document.querySelectorAll('.faq-question').forEach(q => {
+            q.setAttribute('aria-expanded', 'false');
+          });
+          
+          // If it wasn't open before, open it now
+          if (!isOpen) {
+            answer.classList.remove('hidden');
+            answer.classList.add('block');
+            icon.style.transform = 'rotate(45deg)';
+            question.setAttribute('aria-expanded', 'true');
+          }
+        });
+      }
+    });
+  });
+</script>

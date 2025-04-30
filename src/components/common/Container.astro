@@ -1,0 +1,14 @@
+---
+export interface Props {
+  narrow?: boolean;
+  as?: string;
+  class?: string;
+}
+
+const { narrow = false, as: Tag = 'div', class: className = '' } = Astro.props;
+const maxWidth = narrow ? 'max-w-5xl' : 'max-w-7xl';
+---
+
+<Tag class={`mx-auto px-4 sm:px-6 lg:px-8 ${maxWidth} ${className}`}>
+  <slot />
+</Tag>

@@ -1,0 +1,30 @@
+---
+export interface Props {
+  isMobile?: boolean;
+}
+
+const { isMobile = false } = Astro.props;
+
+const navItems = [
+  { name: "Features", href: "/#features" },
+  { name: "Pricing", href: "/#pricing" },
+  { name: "Testimonials", href: "/#testimonials" },
+  { name: "FAQs", href: "/#faqs" }
+];
+
+const baseClasses = "text-neutral-600 hover:text-primary-500 transition-colors font-medium";
+const mobileClasses = "block py-2 text-lg";
+const desktopClasses = "py-1";
+---
+
+<nav>
+  <ul class={isMobile ? "flex flex-col space-y-1" : "flex items-center space-x-8"}>
+    {navItems.map(item => (
+      <li>
+        <a href={item.href} class={`${baseClasses} ${isMobile ? mobileClasses : desktopClasses}`}>
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

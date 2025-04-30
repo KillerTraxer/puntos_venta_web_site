@@ -1,0 +1,83 @@
+---
+export interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  fullWidth?: boolean;
+  class?: string;
+  id?: string;
+  disabled?: boolean;
+}
+
+const {
+  href,
+  type = 'button',
+  variant = 'primary',
+  size = 'md',
+  fullWidth = false,
+  class: className = '',
+  id,
+  disabled = false,
+} = Astro.props;
+
+// Define base classes
+let classes = 'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+
+// Add variant classes
+switch (variant) {
+  case 'primary':
+    classes += ' bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500';
+    break;
+  case 'secondary':
+    classes += ' bg-neutral-100 text-neutral-800 hover:bg-neutral-200 focus:ring-neutral-500';
+    break;
+  case 'accent':
+    classes += ' bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-500';
+    break;
+  case 'outline':
+    classes += ' bg-transparent border border-neutral-300 text-neutral-700 hover:bg-neutral-50 focus:ring-neutral-500';
+    break;
+}
+
+// Add size classes
+switch (size) {
+  case 'sm':
+    classes += ' px-4 py-2 text-sm';
+    break;
+  case 'md':
+    classes += ' px-6 py-3 text-base';
+    break;
+  case 'lg':
+    classes += ' px-8 py-4 text-lg';
+    break;
+}
+
+// Add full width class if needed
+if (fullWidth) {
+  classes += ' w-full';
+}
+
+// Add disabled state
+if (disabled) {
+  classes += ' opacity-60 cursor-not-allowed';
+}
+
+// Add additional classes
+classes += ` ${className}`;
+
+// Determine if this is a link or button
+const Element = href ? 'a' : 'button';
+---
+
+{
+  href ? (
+    <a href={href} class={classes} id={id}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes} id={id} disabled={disabled}>
+      <slot />
+    </button>
+  )
+}

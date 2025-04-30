@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Features from '../components/sections/Features.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import Contact from '../components/sections/Contact.astro';
+
+// Meta information
+const title = "POSPro | Modern Point of Sale System for Your Business";
+const description = "Streamline your business operations with our powerful and intuitive POS system. Manage inventory, track sales, and delight customers - all in one place.";
+---
+
+<Layout title={title} description={description}>
+  <Hero />
+  <Features />
+  <Pricing />
+  <Testimonials />
+  <FAQ />
+  <Contact />
+
+  <script>
+    // Initialize animation observers when document is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add scroll behavior for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth'
+            });
+            
+            // If mobile menu is open, close it
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
+  </script>
+</Layout>

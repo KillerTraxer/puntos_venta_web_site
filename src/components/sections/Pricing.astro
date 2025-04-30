@@ -1,0 +1,243 @@
+---
+import Container from '../common/Container.astro';
+import Card from '../common/Card.astro';
+import Button from '../common/Button.astro';
+---
+
+<section id="pricing" class="py-16 md:py-24 bg-neutral-50">
+  <Container>
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+      <p class="text-lg text-neutral-600 max-w-3xl mx-auto">Choose the plan that's right for your business with no hidden fees.</p>
+      
+      <div class="mt-8 flex justify-center items-center">
+        <span class="text-neutral-700 mr-3">Monthly</span>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="billing-toggle" class="sr-only peer">
+          <div class="w-14 h-7 bg-neutral-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-500"></div>
+        </label>
+        <span class="text-neutral-700 ml-3">Annual <span class="text-accent-500 font-medium ml-1">Save 20%</span></span>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+      <!-- Pricing Cards -->
+      <Card class="pricing-card reveal-up" data-delay="0">
+        <div class="p-8">
+          <h3 class="text-2xl font-bold mb-2">Starter</h3>
+          <p class="text-neutral-600 mb-6">Perfect for small businesses just getting started</p>
+          
+          <div class="mb-6">
+            <div class="flex items-end">
+              <span id="starter-monthly" class="text-4xl font-bold">$29</span>
+              <span id="starter-annual" class="text-4xl font-bold hidden">$23</span>
+              <span class="text-neutral-500 ml-2">/month</span>
+            </div>
+            <p id="starter-annual-note" class="text-sm text-accent-500 mt-1 hidden">Billed annually at $276</p>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>1 POS Terminal</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Basic Inventory Management</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Email Support</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Sales Reports</span>
+            </li>
+            <li class="flex items-start text-neutral-400">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-neutral-300 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd" />
+              </svg>
+              <span>Customer Management</span>
+            </li>
+          </ul>
+          
+          <Button href="/checkout?plan=starter" variant="primary" fullWidth={true} class="checkout-btn" data-plan="starter" data-monthly-price="29" data-annual-price="276">Get Started</Button>
+        </div>
+      </Card>
+      
+      <Card class="pricing-card reveal-up border-2 border-primary-500 relative z-10 md:scale-105 md:-mt-4 md:-mb-4 shadow-md" data-delay="100">
+        <div class="absolute -top-5 left-0 right-0 flex justify-center">
+          <span class="bg-primary-500 text-white text-sm font-semibold py-1 px-4 rounded-full">Most Popular</span>
+        </div>
+        <div class="p-8 pt-10">
+          <h3 class="text-2xl font-bold mb-2">Professional</h3>
+          <p class="text-neutral-600 mb-6">Ideal for growing businesses with multiple needs</p>
+          
+          <div class="mb-6">
+            <div class="flex items-end">
+              <span id="professional-monthly" class="text-4xl font-bold">$79</span>
+              <span id="professional-annual" class="text-4xl font-bold hidden">$63</span>
+              <span class="text-neutral-500 ml-2">/month</span>
+            </div>
+            <p id="professional-annual-note" class="text-sm text-accent-500 mt-1 hidden">Billed annually at $756</p>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>3 POS Terminals</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Advanced Inventory Management</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Customer Management</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Priority Email & Chat Support</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Advanced Analytics & Reports</span>
+            </li>
+          </ul>
+          
+          <Button href="/checkout?plan=professional" variant="primary" fullWidth={true} class="checkout-btn" data-plan="professional" data-monthly-price="79" data-annual-price="756">Get Started</Button>
+        </div>
+      </Card>
+      
+      <Card class="pricing-card reveal-up" data-delay="200">
+        <div class="p-8">
+          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+          <p class="text-neutral-600 mb-6">For large businesses with custom requirements</p>
+          
+          <div class="mb-6">
+            <div class="flex items-end">
+              <span id="enterprise-monthly" class="text-4xl font-bold">$149</span>
+              <span id="enterprise-annual" class="text-4xl font-bold hidden">$119</span>
+              <span class="text-neutral-500 ml-2">/month</span>
+            </div>
+            <p id="enterprise-annual-note" class="text-sm text-accent-500 mt-1 hidden">Billed annually at $1,428</p>
+          </div>
+          
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Unlimited POS Terminals</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Enterprise Inventory Management</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Custom Integrations</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>24/7 Priority Support</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <span>Dedicated Account Manager</span>
+            </li>
+          </ul>
+          
+          <Button href="/checkout?plan=enterprise" variant="primary" fullWidth={true} class="checkout-btn" data-plan="enterprise" data-monthly-price="149" data-annual-price="1428">Get Started</Button>
+        </div>
+      </Card>
+    </div>
+  </Container>
+</section>
+
+<script>
+  // Toggle between monthly and annual pricing
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('active');
+          }, parseInt(entry.target.dataset.delay || '0'));
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1,
+    });
+    
+    document.querySelectorAll('.pricing-card').forEach(card => {
+      observer.observe(card);
+    });
+    
+    const billingToggle = document.getElementById('billing-toggle');
+    
+    if (billingToggle) {
+      billingToggle.addEventListener('change', function() {
+        const isAnnual = this.checked;
+        
+        // Update the pricing display for each plan
+        ['starter', 'professional', 'enterprise'].forEach(plan => {
+          const monthlyEl = document.getElementById(`${plan}-monthly`);
+          const annualEl = document.getElementById(`${plan}-annual`);
+          const annualNoteEl = document.getElementById(`${plan}-annual-note`);
+          
+          if (monthlyEl && annualEl) {
+            if (isAnnual) {
+              monthlyEl.classList.add('hidden');
+              annualEl.classList.remove('hidden');
+              if (annualNoteEl) annualNoteEl.classList.remove('hidden');
+            } else {
+              monthlyEl.classList.remove('hidden');
+              annualEl.classList.add('hidden');
+              if (annualNoteEl) annualNoteEl.classList.add('hidden');
+            }
+          }
+        });
+        
+        // Update checkout buttons to use annual pricing
+        document.querySelectorAll('.checkout-btn').forEach(btn => {
+          const plan = btn.dataset.plan;
+          const baseUrl = `/checkout?plan=${plan}`;
+          
+          if (isAnnual) {
+            btn.setAttribute('href', `${baseUrl}&billing=annual`);
+          } else {
+            btn.setAttribute('href', baseUrl);
+          }
+        });
+      });
+    }
+  });
+</script>

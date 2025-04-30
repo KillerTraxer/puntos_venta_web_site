@@ -1,0 +1,51 @@
+---
+export interface Props {
+  class?: string;
+  padding?: 'sm' | 'md' | 'lg' | 'none';
+  shadow?: 'sm' | 'md' | 'lg' | 'none';
+}
+
+const { 
+  class: className = '', 
+  padding = 'md', 
+  shadow = 'sm' 
+} = Astro.props;
+
+// Define padding classes
+let paddingClass = '';
+switch (padding) {
+  case 'sm':
+    paddingClass = 'p-4';
+    break;
+  case 'md':
+    paddingClass = 'p-6';
+    break;
+  case 'lg':
+    paddingClass = 'p-8';
+    break;
+  case 'none':
+    paddingClass = 'p-0';
+    break;
+}
+
+// Define shadow classes
+let shadowClass = '';
+switch (shadow) {
+  case 'sm':
+    shadowClass = 'shadow-sm';
+    break;
+  case 'md':
+    shadowClass = 'shadow';
+    break;
+  case 'lg':
+    shadowClass = 'shadow-lg';
+    break;
+  case 'none':
+    shadowClass = '';
+    break;
+}
+---
+
+<div class={`bg-white rounded-xl hover:shadow-md transition-shadow duration-300 ${paddingClass} ${shadowClass} ${className}`}>
+  <slot />
+</div>
